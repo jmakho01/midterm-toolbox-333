@@ -171,7 +171,6 @@ public class Toolbox {
     }
     if (head.next == null) { return; }
     
-    //store first value
     SingleNode behind = head;
     SingleNode current = head.next;
 
