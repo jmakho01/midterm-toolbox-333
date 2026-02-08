@@ -290,11 +290,19 @@ public class Toolbox {
    */
   public static String topScorer(Map<String, Integer> scores) {
     if (scores == null || scores.isEmpty()) {
-      throw new IllegalArgumentException("Scares cannot be null or empty");
+      throw new IllegalArgumentException("Scores cannot be null or empty");
     }
-    int highest = -1;
-    for(int score : scores.values()) { if(score > highest) { highest = score; } }
-    for(String name : scores.keySet()) { if(scores.get(name) == highest) return name; }
-    return null;
+    int highScore = -1;
+    String highName = null;
+    for(String name : scores.keySet()) { 
+      if(scores.get(name) > highScore) {
+        highName = name;
+        highScore = scores.get(name);
+      }
+      if(scores.get(name) == highScore) {
+        if(name.compareTo(highName) < 0) { highName = name; }
+      }
+    }
+    return highName;
   }
 }
